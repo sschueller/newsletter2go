@@ -144,10 +144,19 @@ class newsletter2go
     }
 
     /**
-     *    creates a new recipient
-     *    see documentation 6.1
+     * creates a new recipient, see documentation 6.1
+     *
+     * Either email address, phone number or both must be provided
+     *
+     * @param string $email  email address of recipient
+     * @param string $mobile phone number of recipient
+     * @param array  $params options parameters such as lastname, firstname etc.
+     *
+     * @return mixed
+     *
+     * @throws Exception
      */
-    public function createRecipient($email = '', $mobile = '')
+    public function createRecipient($email = '', $mobile = '', $params)
     {
         if (empty($email) && empty($sms)) {
             throw new Exception("n2g: email or mobile must be specified");
