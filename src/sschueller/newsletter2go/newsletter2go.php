@@ -147,9 +147,14 @@ class newsletter2go
      *    creates a new recipient
      *    see documentation 6.1
      */
-    public function createRecipient($params)
+    public function createRecipient($email = '', $mobile = '')
     {
+        if (empty($email) && empty($sms)) {
+            throw new Exception("n2g: email or mobile must be specified");
+        }
 
+        $params['email'] = $email;
+        $params['mobile'] = $mobile;
         $params['key'] = $this->api_key;
         $url = '/' . $this->api_lang . '/api/create/recipient/';
         return $this->handleRequest($url, $params);
@@ -201,11 +206,18 @@ class newsletter2go
      *    deletes an existing recipient
      *    see documentation 6.2
      */
-    public function deleteRecipient($params)
+    public function deleteRecipient($email = '', $mobile = '')
     {
+        if (empty($email) && empty($sms)) {
+            throw new Exception("n2g: email or mobile must be specified");
+        }
+
+        $params['email'] = $email;
+        $params['mobile'] = $mobile;
         $params['key'] = $this->api_key;
-        $url = '/' . $this->api_lang . '/api/delete/recipient/';
+        $url = '/' . $this->api_lang . '/api/create/recipient/';
         return $this->handleRequest($url, $params);
+
     }
 
     /**
