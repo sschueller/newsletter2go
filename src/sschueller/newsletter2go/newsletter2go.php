@@ -212,9 +212,21 @@ class newsletter2go
      *    adds a single recipient to a newsletter which should be sent
      *    see documentation 5.2
      */
-    public function addRecipientToNewsletter($params)
+    public function addRecipientToNewsletter($newsletterId, $email = '', $mobile = '')
     {
+        if (empty($newsletterId)) {
+            throw new Exception("n2g: newsletter id required!");
+        }
+
+        if (empty($email) && empty($mobile)) {
+            throw new Exception("n2g: email or mobile must be specified");
+        }
+
+        $params['id'] = $newsletterId;
+        $params['email'] = $email;
+        $params['mobile'] = $mobile;
         $params['key'] = $this->api_key;
+
         $url = '/' . $this->api_lang . '/api/set/recipient/';
         return $this->handleRequest($url, $params);
     }
