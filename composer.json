@@ -1,0 +1,8 @@
+{
+    "name": "sschueller/newsletter2go",
+    "autoload": {
+        "psr-0" : {
+            "sschueller\\newsletter2go" : "src"
+        }
+    }
+}
