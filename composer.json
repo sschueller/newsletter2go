@@ -4,5 +4,12 @@
         "psr-0" : {
             "sschueller\\newsletter2go" : "src"
         }
+    },
+    "description": "",
+    "keywords": ["",""],
+    "homepage": "https://github.com/sschueller/newsletter2go",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.3.0"
     }
 }
